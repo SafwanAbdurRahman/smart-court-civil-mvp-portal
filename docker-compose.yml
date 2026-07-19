@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-8000}:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      # Overrides whatever DATABASE_URL is set to in .env so the SQLite file
+      # always lands on the mounted volume below, not the ephemeral container layer.
+      - DATABASE_URL=sqlite:////app/data/smartcourt.db
+    volumes:
+      - smartcourt-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  smartcourt-data:

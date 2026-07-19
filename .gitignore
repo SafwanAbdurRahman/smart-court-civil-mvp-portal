@@ -6,10 +6,28 @@ __v0_jsx-dev-runtime.ts
 .v0-trash/
 .vercel/
 
-# Environment variables
+# Environment variables — NEVER commit these
+.env
+.env.local
 .env*.local
+backend/.env
 
-# Common ignores
+# Node
 node_modules
 .next/
 .DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Local database
+backend/*.db
+backend/data/
+
+# Repomix outputs
+repomix-output.xml

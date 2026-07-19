@@ -1,0 +1,21 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+python-multipart
+slowapi
+pyngrok
+nest-asyncio
+
+# AI engine
+ollama
+PyMuPDF
+
+# Auth
+passlib[bcrypt]
+python-jose[cryptography]
+
+# Database
+sqlalchemy
+
+# Needed for pydantic's EmailStr validator used in the auth schemas
+pydantic[email]
